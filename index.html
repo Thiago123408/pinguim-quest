@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pinguim Quest</title>
+  <meta name="description" content="Pinguim Quest — deslize no gelo, colete peixes e fuja da orca!">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="Pinguim Quest"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hud hidden">
+    <div class="left">
+      <span class="pill">🧊 Fase: <strong id="levelLabel">1</strong></span>
+      <span class="pill">🐟 XP: <strong id="xpLabel">0</strong></span>
+      <span class="pill">🪙 Moedas: <strong id="coinLabel">0</strong></span>
+    </div>
+    <div class="right">
+      <span class="pill">❤️ <strong id="livesLabel">3</strong></span>
+      <span class="pill"><strong id="distanceLabel">0 m</strong></span>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar" id="progressBar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- MAIN MENU -->
+  <section id="menu" class="overlay">
+    <div class="panel">
+      <h1>Pinguim <span>Quest</span></h1>
+      <p class="subtitle">Deslize de barriga, colete peixes e fuja da orca no gelo!</p>
+      <div class="buttons">
+        <button id="btnStart" class="btn">▶ Jogar</button>
+        <button id="btnSettings" class="btn ghost">⚙️ Configurações</button>
+        <button id="btnHow" class="btn ghost">❔ Como jogar</button>
+      </div>
+      <p class="foot">Melhor pontuação: <strong id="bestScoreLabel">0 XP</strong></p>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settings" class="overlay hidden">
+    <div class="panel small">
+      <h2>Configurações</h2>
+      <label class="row">
+        <span>Volume geral</span>
+        <input type="range" id="volumeRange" min="0" max="1" step="0.01">
+      </label>
+      <label class="row">
+        <span>Partículas (neve)</span>
+        <input type="checkbox" id="particlesCheck">
+      </label>
+      <label class="row">
+        <span>Dificuldade</span>
+        <select id="difficultySelect">
+          <option value="easy">Fácil</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Difícil</option>
+        </select>
+      </label>
+      <div class="buttons">
+        <button id="btnBackSettings" class="btn">Voltar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO -->
+  <section id="howto" class="overlay hidden">
+    <div class="panel small">
+      <h2>Como jogar</h2>
+      <ul class="help">
+        <li>⬅ ➡ mover | ⬇.. deslizar de barriga | ⬆ pular</li>
+        <li>Espaço: turbo curto</li>
+        <li>🐟 peixes dão XP • 🪙 peixes dourados dão moedas</li>
+        <li>Fuja da orca! Se ela encostar, você perde 1 vida</li>
+        <li>Complete a distância da fase para avançar</li>
+        <li>ESC pausa • P pausa</li>
+      </ul>
+      <div class="buttons">
+        <button id="btnBackHow" class="btn">Entendi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAUSE -->
+  <section id="pause" class="overlay hidden">
+    <div class="panel small">
+      <h2>Pausado</h2>
+      <div class="buttons">
+        <button id="btnResume" class="btn">Continuar</button>
+        <button id="btnQuit" class="btn ghost">Sair</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME OVER -->
+  <section id="gameover" class="overlay hidden">
+    <div class="panel">
+      <h2>Fim de Jogo</h2>
+      <p class="subtitle">Resultado</p>
+      <div class="score-box">
+        <div><strong>XP</strong><span id="finalXp">0</span></div>
+        <div><strong>Moedas</strong><span id="finalCoins">0</span></div>
+        <div><strong>Fase</strong><span id="finalLevel">1</span></div>
+      </div>
+      <div class="buttons">
+        <button id="btnRestart" class="btn">Jogar de novo</button>
+        <button id="btnMenu" class="btn ghost">Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
